@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "c:\\Users\\Admin\\Desktop\\Finance\\Calculate Refund\\Refund_Backend\\refund\\wwwroot\\Brands\\04c4cb63-91fe-443f-96dc-ec7401b99a14_20240922.jpg",
+      "PackagePath": "staticwebassets\\Brands\\04c4cb63-91fe-443f-96dc-ec7401b99a14_20240922.jpg"
+    },
+    {
+      "Id": "c:\\Users\\Admin\\Desktop\\Finance\\Calculate Refund\\Refund_Backend\\refund\\wwwroot\\Brands\\4faa716e-e709-4ab0-a501-e3d2359b6b16_20240915.png",
+      "PackagePath": "staticwebassets\\Brands\\4faa716e-e709-4ab0-a501-e3d2359b6b16_20240915.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.refund.props",
+      "PackagePath": "build\\refund.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.refund.props",
+      "PackagePath": "buildMultiTargeting\\refund.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.refund.props",
+      "PackagePath": "buildTransitive\\refund.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.refund.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
