@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("refund")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a90ca501fb7e50e280b83805dccf20622a94e19")]
 [assembly: System.Reflection.AssemblyProductAttribute("refund")]
 [assembly: System.Reflection.AssemblyTitleAttribute("refund")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
