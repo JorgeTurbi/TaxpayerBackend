@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using refund.ContextDir;
 
@@ -11,9 +12,11 @@ using refund.ContextDir;
 namespace refund.Migrations
 {
     [DbContext(typeof(DbContextPlayer))]
-    partial class DbContextPlayerModelSnapshot : ModelSnapshot
+    [Migration("20241002142824_ClientsCreated")]
+    partial class ClientsCreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

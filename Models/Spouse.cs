@@ -23,15 +23,16 @@ namespace refund.Models
         public int IncometypeId { get; set; }
 
         [DataType(DataType.Currency)]
-        public decimal? SpouseWagesIncome { get; set; }
+        public decimal? SpouseGrossIncome { get; set; }
         [DataType(DataType.Currency)]
-        public decimal? SpouseFederalIncomeTaxWithheld { get; set; }
+        public decimal? SpouseSelfEmploymentComp { get; set; }
         [DataType(DataType.Currency)]
-        public decimal? SpouseSelfEmploymentCompensation { get; set; }
+        public decimal? SpouseYtdIncome { get; set; }
         [DataType(DataType.Currency)]
-        public decimal? SpouseYTDEarnings { get; set; }
-        [DataType(DataType.Currency)]
-        public decimal? SpouseYTDFederalWithholding { get; set; }
+        public decimal? SpouseWagesFederal { get; set; }
+         [DataType(DataType.Currency)]
+        public decimal? SpouseYtdFederal { get; set; }
+    
 
         
         public virtual required  TaxPlayer TaxPlayer { get; set; }

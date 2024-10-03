@@ -21,6 +21,7 @@ namespace refund.ContextDir
         public DbSet<TaxPreparer> TaxPreparer { get; set; }
         public DbSet<State> State { get; set; }
         public DbSet<City> City { get; set; }
+        public DbSet<Client> Client { get; set; }
 
 
 

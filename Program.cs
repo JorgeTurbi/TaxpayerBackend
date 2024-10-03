@@ -69,6 +69,7 @@ builder.Services.AddAutoMapper(typeof(Program));
         builder.Services.AddScoped<ICityValidate,ValidateLibs>();
         builder.Services.AddScoped<IState,StateLibs>();
         builder.Services.AddScoped<ICity,CityLibs>();
+        builder.Services.AddScoped<IClient,ClientLibs>();
         
 
 
