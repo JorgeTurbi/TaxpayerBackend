@@ -7,6 +7,7 @@ namespace refund.Libs
     {
          Task<ApiResponse<string>> PropertiesValidate(string name);
            Task<ApiResponse<string>> RecordExistsValidate(string name);
+           Task<ApiResponse<string>>TaxPreparerExits(string ifiNumber);
            
     }
 }

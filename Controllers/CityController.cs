@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using refund.DTOs;
 using refund.Services;
 
 namespace refund.Controllers
 {
+     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CityController : ControllerBase
@@ -22,16 +24,20 @@ namespace refund.Controllers
         {
             return Ok(await _city.Create(cityDto));
         }
+          [AllowAnonymous]
         [HttpGet("GetAll")]
+       
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _city.GetAll());
         }
+          [AllowAnonymous]
          [HttpGet("GetbyId")]
         public async Task<IActionResult> GetbyId(int CityId)
         {
             return Ok(await _city.GetbyId(CityId));
         }
+          [AllowAnonymous]
           [HttpGet("GetCitiesbyStateId")]
         public async Task<IActionResult> GetCitiesbyStateId(int StateId)
         {

@@ -1,10 +1,12 @@
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using refund.DTOs;
 using refund.Services;
 
 namespace refund.Controllers
 {
+     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class IncomeTypeController : ControllerBase
@@ -29,6 +31,8 @@ namespace refund.Controllers
 
             return Ok(await _incometype.Create(income));
         }
+         
+           [AllowAnonymous]
          [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {

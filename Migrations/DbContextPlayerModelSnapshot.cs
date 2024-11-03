@@ -315,6 +315,74 @@ namespace refund.Migrations
                     b.ToTable("IncomeType");
                 });
 
+            modelBuilder.Entity("refund.Models.SecurityQuestions", b =>
+                {
+                    b.Property<int>("QuestionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionID"));
+
+                    b.Property<string>("QuestionText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("QuestionID");
+
+                    b.ToTable("SecurityQuestions");
+
+                    b.HasData(
+                        new
+                        {
+                            QuestionID = 1,
+                            QuestionText = "What is the name of your first best friend?"
+                        },
+                        new
+                        {
+                            QuestionID = 2,
+                            QuestionText = "What is the name of the street you grew up on?"
+                        },
+                        new
+                        {
+                            QuestionID = 3,
+                            QuestionText = "What was the name of your first pet?"
+                        },
+                        new
+                        {
+                            QuestionID = 4,
+                            QuestionText = "What was your grandparent’s nickname?"
+                        },
+                        new
+                        {
+                            QuestionID = 5,
+                            QuestionText = "In what city were you born?"
+                        },
+                        new
+                        {
+                            QuestionID = 6,
+                            QuestionText = "What was the first concert you attended?"
+                        },
+                        new
+                        {
+                            QuestionID = 7,
+                            QuestionText = "What was your favorite childhood food?"
+                        },
+                        new
+                        {
+                            QuestionID = 8,
+                            QuestionText = "What was the name of your favorite elementary school teacher?"
+                        },
+                        new
+                        {
+                            QuestionID = 9,
+                            QuestionText = "Where did you spend your first vacation?"
+                        },
+                        new
+                        {
+                            QuestionID = 10,
+                            QuestionText = "What is the title of your all-time favorite movie?"
+                        });
+                });
+
             modelBuilder.Entity("refund.Models.Spouse", b =>
                 {
                     b.Property<int>("SpouseId")
@@ -387,6 +455,12 @@ namespace refund.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Range_End")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Range_Start")
+                        .HasColumnType("bigint");
 
                     b.HasKey("StateId");
 
@@ -484,6 +558,9 @@ namespace refund.Migrations
                     b.Property<DateTime>("Created_On")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Messages")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -498,9 +575,43 @@ namespace refund.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Zipcode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("TaxPreparerId");
 
                     b.ToTable("TaxPreparer");
+                });
+
+            modelBuilder.Entity("refund.Models.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Lastlogin")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Question")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Response")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("refund.Models.Address", b =>

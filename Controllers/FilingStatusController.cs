@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using refund.DTOs;
 using refund.Services;
@@ -5,6 +6,7 @@ using Serilog;
 
 namespace refund.Controllers
 {
+     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class FilingStatusController : ControllerBase
@@ -29,6 +31,7 @@ namespace refund.Controllers
 
             return Ok(await _status.Create(statusDto));
         }
+          [AllowAnonymous]
          [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {

@@ -92,5 +92,17 @@ namespace refund.Libs
         bool Exists =await _db.State.FirstOrDefaultAsync(a=>a.Name.Trim().ToLower().StartsWith(normalizedname))!=null? true:false;
         return Exists;
         }
+
+        public async Task<ApiResponse<string>> TaxPreparerExits(string ifiNumber)
+        {
+            if (string.IsNullOrEmpty(ifiNumber))
+            {
+                bool response = await _db.TaxPreparer.AsNoTracking().Where(a=>a.Username==ifiNumber).FirstOrDefaultAsync()!=null;
+                return new ApiResponse<string>(response,response==true?"Tax Preparer Exits":"Tax Preparer not Exits",null!);
+            }
+            else{
+                return new ApiResponse<string>(false,"IFI Number Invalid",null!);
+            }
+        }
     }
 }

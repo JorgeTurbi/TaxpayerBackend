@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using refund.DTOs;
 using refund.Services;
@@ -6,6 +7,7 @@ using Serilog;
 
 namespace refund.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class TaxPreparerController : ControllerBase
@@ -15,7 +17,6 @@ namespace refund.Controllers
         {
             _preparer = preparer;
         }
-
 
 
         [HttpPost("Create")]
@@ -42,6 +43,20 @@ namespace refund.Controllers
 
             return Ok(await _preparer.Update(preparerDto));
         }
+          [AllowAnonymous]
+        [HttpGet("GetBrand")]
+        public async Task<IActionResult> GetBrand(int preparerId)
+        {
+
+            return Ok(await _preparer.GetImagebyTaxPreparerId(preparerId));
+        }
+          [AllowAnonymous]
+        [HttpGet("ValidateZipCode")]
+        public async Task<IActionResult>ValidateZipCode(string username)
+        {
+            return Ok(await _preparer.ValidateZipCode(username));
+        }
+
 
         [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(int TaxPreparerId)
@@ -55,6 +70,21 @@ namespace refund.Controllers
         {
 
             return Ok(await _preparer.GetbyId(TaxPreparerId));
+        }
+
+        [AllowAnonymous]
+        [HttpGet("Validate")]
+        public async Task<IActionResult> Validate(string username)
+        {
+
+            return Ok(await _preparer.Check(username));
+        }
+        [AllowAnonymous]
+        [HttpGet("GetDataPreparer")]
+       
+        public async Task<IActionResult> GetDataPreparer(string username)
+        {
+            return Ok(await _preparer.GetDataPreparer(username));
         }
 
     }
