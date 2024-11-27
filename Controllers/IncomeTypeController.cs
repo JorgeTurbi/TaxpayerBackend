@@ -6,7 +6,6 @@ using refund.Services;
 
 namespace refund.Controllers
 {
-     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class IncomeTypeController : ControllerBase

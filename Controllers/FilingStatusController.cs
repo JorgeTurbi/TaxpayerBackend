@@ -6,7 +6,7 @@ using Serilog;
 
 namespace refund.Controllers
 {
-     [Authorize]
+ 
     [ApiController]
     [Route("api/[controller]")]
     public class FilingStatusController : ControllerBase

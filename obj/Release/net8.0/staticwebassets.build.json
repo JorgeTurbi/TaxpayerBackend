@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "QPkBrYn2GqJWl71uVncocZ4miAyWtezJJB0w6oddFcg=",
+  "Source": "refund",
+  "BasePath": "_content/refund",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "refund\\wwwroot",
+      "Source": "refund",
+      "ContentRoot": "C:\\Users\\Admin\\Desktop\\Finance\\Calculate Refund\\Refund_Backend\\refund\\wwwroot\\",
+      "BasePath": "_content/refund",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

@@ -5142,11 +5142,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Admin\\Desktop\\Finance\\Calculate Refund\\Refund_Backend\\refund\\refund.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Escritorio hasta Noviembre 2024\\Finance\\Calculate Refund\\Refund_Backend\\refund\\refund.csproj",
       "projectName": "refund",
-      "projectPath": "c:\\Users\\Admin\\Desktop\\Finance\\Calculate Refund\\Refund_Backend\\refund\\refund.csproj",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\Escritorio hasta Noviembre 2024\\Finance\\Calculate Refund\\Refund_Backend\\refund\\refund.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Admin\\Desktop\\Finance\\Calculate Refund\\Refund_Backend\\refund\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\Escritorio hasta Noviembre 2024\\Finance\\Calculate Refund\\Refund_Backend\\refund\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

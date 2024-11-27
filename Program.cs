@@ -175,13 +175,14 @@ var app = builder.Build();
 try
 {
     // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseCors("AllowAllOrigins");
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    app.UseCors("AllowAllOrigins");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
