@@ -11,14 +11,16 @@ using Serilog;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+var configuration = builder.Configuration;
+var apiBaseUrl = configuration["ApiSettings:BaseUrl"];
 var logFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
 builder.Services.AddAutoMapper(typeof(Program));
 
-    builder.Services.AddDbContext<DbContextPlayer>(options =>{
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-        
-    });
+builder.Services.AddDbContext<DbContextPlayer>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -37,7 +39,7 @@ Log.Logger = new LoggerConfiguration()
 builder.Services.AddControllers();
 // .AddNewtonsoftJson(options=>{
 //             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            
+
 // options.SerializerSettings.Error = (sender, args) =>
 //         {
 //             if (args.ErrorContext.Error is InvalidOperationException && args.ErrorContext.Member?.ToString() == "Context")
@@ -49,7 +51,7 @@ builder.Services.AddControllers();
 
 
 // });
- 
+
 // builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option=>{
 //     option.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
 //     {
@@ -71,7 +73,18 @@ builder.Services.AddCors(options =>
             builder.AllowAnyOrigin()
                    .AllowAnyMethod()
                    .AllowAnyHeader();
-        });
+        }
+        );
+    // options.AddPolicy("fixOrigins",
+
+    //   builder =>
+    //   {
+    //       builder.WithOrigins(apiBaseUrl!)
+    //           .AllowAnyHeader()
+    //           .AllowAnyMethod();
+    //   }
+    // );
+
 });
 builder.Services.AddAuthentication(options =>
 {
@@ -86,9 +99,9 @@ builder.Services.AddAuthentication(options =>
     {
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["jwt:Key"]!)),
-    //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("veryverysecret..")),
-  ValidateIssuer = false, // No validar el emisor (issuer)
-  ValidateAudience = false, // No validar la audiencia
+        //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("veryverysecret..")),
+        ValidateIssuer = false, // No validar el emisor (issuer)
+        ValidateAudience = false, // No validar la audiencia
         ClockSkew = TimeSpan.FromMinutes(10)
     };
 });
@@ -103,13 +116,13 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "NOMBRE DE LA EMPRESA",
+        Title = "PATHWARD COMPANY",
         Version = "v2",
         Description = "Servicio de uso exclusivo de ",
         TermsOfService = new Uri("https://taxpro.com"),
         Contact = new OpenApiContact
         {
-            Name = "Dirección de Tecnología",
+            Name = "TI Department",
             Email = "info@test.com",
             Url = new Uri("https://taxprox.com"),
         },
@@ -155,18 +168,19 @@ builder.Services.AddSwaggerGen(c =>
 
 
 
-        //defining services
-        builder.Services.AddScoped<IIncometype,IncometypeLibs>();
-        builder.Services.AddScoped<IFilingStatus,FilingStatusLibs>();
-        builder.Services.AddScoped<ITaxPreparer,TaxPreparerLibs>();
-        builder.Services.AddScoped<IValidators,ValidateLibs>();
-        builder.Services.AddScoped<IStateValidators,ValidateLibs>();
-        builder.Services.AddScoped<ICityValidate,ValidateLibs>();
-        builder.Services.AddScoped<IState,StateLibs>();
-        builder.Services.AddScoped<ICity,CityLibs>();
-        builder.Services.AddScoped<IClient,ClientLibs>();
-        builder.Services.AddScoped<ILogin,LoginLibs>();
-        
+//defining services
+builder.Services.AddScoped<IIncometype, IncometypeLibs>();
+builder.Services.AddScoped<IFilingStatus, FilingStatusLibs>();
+builder.Services.AddScoped<ITaxPreparer, TaxPreparerLibs>();
+builder.Services.AddScoped<IValidators, ValidateLibs>();
+builder.Services.AddScoped<IStateValidators, ValidateLibs>();
+builder.Services.AddScoped<ICityValidate, ValidateLibs>();
+builder.Services.AddScoped<IState, StateLibs>();
+builder.Services.AddScoped<ICity, CityLibs>();
+builder.Services.AddScoped<IClient, ClientLibs>();
+builder.Services.AddScoped<ILogin, LoginLibs>();
+builder.Services.AddScoped<IPostalCode, PostalCodeLibs>();
+
 
 
 
@@ -175,21 +189,23 @@ var app = builder.Build();
 try
 {
     // Configure the HTTP request pipeline.
-if (app.Environment.IsProduction())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    if (app.Environment.IsProduction())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
     app.UseCors("AllowAllOrigins");
-app.UseHttpsRedirection();
-app.UseAuthentication();
-app.UseAuthorization();
+    // app.UseCors("fixOrigins");
+    app.UseSwagger();
+    app.UseSwaggerUI();
 
-app.MapControllers();
+    app.UseHttpsRedirection();
+    app.UseAuthentication();
+    app.UseAuthorization();
 
-app.Run();
+    app.MapControllers();
+
+    app.Run();
 
 }
 catch (Exception ex)

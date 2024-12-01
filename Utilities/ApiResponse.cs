@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using refund.Models;
 
 namespace refund.Utilities
 {
     public class ApiResponse<T>
     {
-
+         
         public bool Success { get; set; }
         public string? Message { get; set; }
         public T? Data { get; set; }
@@ -19,5 +20,6 @@ namespace refund.Utilities
             Data = data;
         }
 
+      
     }
 }

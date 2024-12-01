@@ -315,6 +315,28 @@ namespace refund.Migrations
                     b.ToTable("IncomeType");
                 });
 
+            modelBuilder.Entity("refund.Models.PostalCodes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PrimaryCity")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("States")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PostalCodes");
+                });
+
             modelBuilder.Entity("refund.Models.SecurityQuestions", b =>
                 {
                     b.Property<int>("QuestionID")
