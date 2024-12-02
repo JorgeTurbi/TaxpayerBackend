@@ -75,15 +75,15 @@ builder.Services.AddCors(options =>
                    .AllowAnyHeader();
         }
         );
-    // options.AddPolicy("fixOrigins",
+    options.AddPolicy("fixOrigins",
 
-    //   builder =>
-    //   {
-    //       builder.WithOrigins(apiBaseUrl!)
-    //           .AllowAnyHeader()
-    //           .AllowAnyMethod();
-    //   }
-    // );
+      builder =>
+      {
+          builder.WithOrigins(apiBaseUrl!)
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+      }
+    );
 
 });
 builder.Services.AddAuthentication(options =>
@@ -195,7 +195,7 @@ try
         app.UseSwaggerUI();
     }
     app.UseCors("AllowAllOrigins");
-    // app.UseCors("fixOrigins");
+     app.UseCors("fixOrigins");
     app.UseSwagger();
     app.UseSwaggerUI();
 
